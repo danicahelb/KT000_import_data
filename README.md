@@ -12,14 +12,13 @@ setwd("~/Desktop/Microarray Analyses/Kevin's array/151118 data/")
 #Load array data:
 
 csv_files <- list.files("./Data/Raw Data/")
-
+'''
 for(i in csv_files){
   temp <- read.csv(paste("./Data/Raw Data/", i, sep=""), skip=3, as.is = c(1,4:13))
   data_name <- gsub("_$","",gsub(" ","", gsub("[S/s]lide","", gsub("^new_Apac","",gsub("[.]csv$", "", i)))))
   temp$slideN <- gsub("^.+_", "", data_name)
   temp$study <- paste("Apac", gsub("_.+$", "", data_name), sep="_")
-  
-  
+    
   temp$subarrayN <- 1
   temp$subarrayN[temp$Block %in% c("Block5", "Block6", "Block7", "Block8")] <- 2
   temp$subarrayN[temp$Block %in% c("Block9", "Block10", "Block11", "Block12")] <- 3
@@ -35,7 +34,7 @@ for(i in csv_files){
   
   do.call("<-",list(data_name, temp))   
 }
-
+'''
 
 ##########################################################################################
 #merge data in separate slides together
