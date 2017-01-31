@@ -4,6 +4,7 @@ Import Apac data from the KT array
 ##########################################################################################
 
 rm(list=ls()) 
+
 setwd("~/Desktop/Microarray Analyses/Kevin's array/151118 data/") 
 
 
