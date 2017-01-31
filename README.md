@@ -9,7 +9,7 @@ setwd("~/Desktop/Microarray Analyses/Kevin's array/151118 data/")
 ```
 
 ##########################################################################################
-#Load array data:
+##Load array data:
 
 ```r
 csv_files <- list.files("./Data/Raw Data/")
@@ -38,7 +38,7 @@ for(i in csv_files){
 ```
 
 ##########################################################################################
-#merge data in separate slides together
+##merge data in separate slides together
 
 ```r
 for(i in gsub("^X", "", ls()[grep("^X", ls())])){
@@ -62,7 +62,7 @@ for(i in c(6:11)){
 
 
 ##########################################################################################
-#determine position
+##determine position
 
 ```r
 d1$MC <- 1
@@ -81,7 +81,7 @@ d1$position <- paste(d1$position, d1$SC, sep=".")
 
 
 ##########################################################################################
-#determine which antigens are in which positions on the array & create unique identifiers for duplicate spots
+##determine which antigens are in which positions on the array & create unique identifiers for duplicate spots
 
 ```r
 d1 <- d1[order(d1$study, d1$slideN,d1$MR, d1$SR, d1$MC, d1$SC),]
@@ -94,7 +94,7 @@ d1$spot <- paste(gsub(" ", "", d1$antigen), d1$INDEX, sep="_")
 
 
 ##########################################################################################
-#clean up array data 
+##clean up array data 
 
 ```r
 d1 <- d1[d1$antigen!="REF",]
@@ -106,7 +106,7 @@ rownames(d1) <- 1:nrow(d1)
 
 
 ##########################################################################################
-#save array data
+##save array data
 
 ```r
 write.csv(d1, file=paste("./Data/Processed Data/", gsub("-", "", Sys.Date()), "_", "import_data.csv", sep=""), row.names=F)
